@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Note</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-buttons a {
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-btn {
+            background-color: gray;
+            color: white;
+        }
+
+        /* Form Container - Matches Saved Notes Style */
+        .form-container {
+            background: #ffffcc; /* Change this to match saved notes */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            width: 550px; /* Made wider */
+            margin-top: 80px; /* More spacing from top */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: calc(100% - 24px); /* Fixes alignment */
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #ffffcc; /* Same as saved notes */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        textarea {
+            height: 350px; /* Increased height */
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">
+            <a href="/home">
+                <img src="resources/logo image no background.png" alt="Note App Logo">
+            </a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/" class="home-btn">Home</a>
+            <a href="/note" class="back-btn">Back to Notes</a>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Add New Note</h2>
+        <form action="/addnote" method="POST">
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="body" placeholder="Note body" required></textarea>
+            <button type="submit">Save Note</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-buttons a {
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-btn {
+            background-color: gray;
+            color: white;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: #ffffcc; /* Matches saved notes */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            width: 550px; /* Wider container */
+            margin-top: 150px; /* Increased margin to accommodate larger logo */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #ffffcc; /* Same as saved notes */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        textarea {
+            height: 350px; /* Increased height */
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/home" class="logo">
+            <img src="resources/logo image no background.png" alt="Notes App Logo">
+        </a>
+        <div class="nav-buttons">
+            <a href="/" class="home-btn">Home</a>
+            <a href="/note" class="back-btn">Back to Notes</a>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Edit Note</h2>
+        <form action="/updatenote/<%= note._id %>" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%= note.title %>" required>
+
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" required><%= note.body %></textarea>
+
+            <button type="submit">Update Note</button>
+        </form>
+    </div>
+</body>
+</html>

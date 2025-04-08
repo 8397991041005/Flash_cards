@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZapCards</title>
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Prevent scrolling */
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Main container to hold sections */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            gap: 20px;
+            padding: 10px;
+        }
+
+        /* Left Sidebar (User Section) */
+        .text-box-1 {
+            flex: 1;
+            min-width: 250px;
+            padding: 30px;
+            font-size: 13px;
+            color: white;
+            font-weight: bold;
+            background-color: #5679cf;
+            border-radius: 25px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes image to the bottom */
+        }
+
+        .image-box-1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-box-1 img {
+            max-width: 80%;
+            object-fit: contain;
+        }
+
+        /* Middle Section (Fixed, No Scrolling) */
+        .text-box-2 {
+            flex: 3;
+            min-width: 300px;
+            padding: 30px;
+            font-size: 17px;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            background-color: rgb(168, 96, 240);
+            border-radius: 25px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            width: 500px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Right Sidebar (Fixed, No Scrolling) */
+        .text-box-3 {
+            flex: 1;
+            min-width: 250px;
+            background-color: #deffce;
+            border-radius: 25px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        /* Button styles */
+        button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button img {
+            margin-right: 8px;
+        }
+
+        .button-1-box-1, .button-2-box-1 {
+            background-color: #5679cf;
+            color: white;
+            font-size: 13px;
+        }
+
+        .button-1-box-1:hover, .button-2-box-1:hover {
+            background-color: #3a5ba5;
+        }
+
+        .button-1-box-2, .button-2-box-2 {
+            background-color: rgb(168, 96, 240);
+            color: white;
+            font-size: 16px;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 450px;
+            border: 2px solid white;
+        }
+
+        .button-1-box-2:hover, .button-2-box-2:hover {
+            background-color: rgb(145, 75, 214);
+        }
+
+        /* Image styles */
+        .image-box-31, .gif-box-3, .image-box-32 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-box-31 img, .gif-box-3 img, .image-box-32 img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        /* Title and intro text */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .text-box-1, .text-box-2, .text-box-3 {
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar (User) -->
+        <div class="text-box-1">
+            <div>
+                <h2>User</h2>
+                <a href="/addnote">
+                    <button class="button-1-box-1">
+                        <img src="https://cdn-icons-png.flaticon.com/512/18892/18892957.png" alt="icon" width="15" />
+                        New note
+                    </button>
+                </a>
+                <a href="/note">
+                    <button class="button-2-box-1">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068327.png" alt="icon" width="15" />
+                        View saved notes
+                    </button>
+                </a>
+            </div>
+            <div class="image-box-1">
+                <img src="resources/trophy nobg.png" alt="Example Image" />
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div class="text-box-2">
+            <h1>Welcome to ZapCards</h1>
+            <pre>The ultimate platform for quick and effective learning with flashcards 
+Create, customize, and study smarter!</pre>
+            <a href="/addnote">
+                <button class="button-1-box-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/18892/18892957.png" alt="icon" width="30" />
+                    Create your own flashcards
+                </button>
+            </a>
+            <a href="/note">
+                <button class="button-2-box-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3068/3068327.png" alt="icon" width="30" />
+                    Explore pre-made decks on various subjects
+                </button>
+            </a>
+            <div class="image-box">
+                <img src="resources/mid_img-removebg-preview.png" alt="Mid Image" />
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="text-box-3">
+            <div class="image-box-31">
+                <img src="resources/lantern-removebg-preview.png" alt="Lantern" />
+            </div>
+            <div class="gif-box-3">
+                <img src="flashgif.gif" alt="GIF Example" />
+            </div>
+            <div class="image-box-32">
+                <img src="resources/bottom_right_home-removebg-preview.png" alt="Example Image" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

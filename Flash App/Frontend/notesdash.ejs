@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .home-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+        }
+        .add-note-btn {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .note {
+            background: #ffdd57;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .note:nth-child(2) { background: #ff9f68; }
+        .note:nth-child(3) { background: #c4eb6e; }
+        .note:nth-child(4) { background: #b39ddb; }
+        .note:nth-child(5) { background: #a8e6cf; }
+        .note:nth-child(6) { background: #40c4ff; }
+        .note h3 {
+            margin: 0 0 10px;
+        }
+        .note p {
+            margin: 0 0 15px;
+        }
+        .note-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .edit-btn, .delete-btn {
+            background: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .edit-btn { color: blue; }
+        .delete-btn { color: red; }
+        .no-notes-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .no-notes-container img {
+            width: 200px;
+            opacity: 0.8;
+        }
+        .no-notes-container p {
+            font-size: 18px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/home" class="logo">
+            <img src="resources/logo image no background.png" alt="Notes App Logo">
+        </a>
+        <a href="/home" class="home-btn">Home</a>
+    </div>
+    
+    <h1>Your Notes</h1>
+
+    <!-- Add Note Button -->
+    <a href="/addnote" class="add-note-btn">+ Add Note</a>
+
+    <% if (notes.length > 0) { %>
+        <div class="notes-container">
+            <% notes.forEach(note => { %>
+                <div class="note">
+                    <h3><%= note.title %></h3>
+                    <p><%= note.body %></p>
+                    <div class="note-actions">
+                        <a href="/editnote/<%= note._id %>" class="edit-btn">Edit</a> 
+                        <form action="/deletenote/<%= note._id %>" method="POST">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </div> 
+            <% }) %>
+        </div>
+    <% } else { %>
+        <div class="no-notes-container">
+            <img src="/images/no-notes.png" alt="No Notes">
+            <p>No saved notes</p>
+        </div>
+    <% } %>
+</body>
+</html>
